@@ -1,6 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "R_D_CPP_FPSCharacter.h"
+
+#include "CharacterState.h"
 #include "R_D_CPP_FPSProjectile.h"
 #include "Animation/AnimInstance.h"
 #include "Camera/CameraComponent.h"
@@ -77,6 +79,26 @@ void AR_D_CPP_FPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 	else
 	{
 		UE_LOG(LogTemplateCharacter, Error, TEXT("'%s' Failed to find an Enhanced Input Component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
+	}
+}
+
+void AR_D_CPP_FPSCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	if (const ACharacterState* CharacterState = NewController->GetPlayerState<ACharacterState>())
+	{
+		CharacterState->GetAbilitySystemComponent()->SetAvatarActor(this);
+	}
+}
+
+void AR_D_CPP_FPSCharacter::UnPossessed()
+{
+	Super::UnPossessed();
+
+	if (const ACharacterState* CharacterState = GetPlayerState<ACharacterState>())
+	{
+		CharacterState->GetAbilitySystemComponent()->SetAvatarActor(nullptr);
 	}
 }
 
