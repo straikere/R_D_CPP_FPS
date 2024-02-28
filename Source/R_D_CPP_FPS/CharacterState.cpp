@@ -3,3 +3,7 @@
 
 #include "CharacterState.h"
 
+ACharacterState::ACharacterState()
+{
+	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+}
