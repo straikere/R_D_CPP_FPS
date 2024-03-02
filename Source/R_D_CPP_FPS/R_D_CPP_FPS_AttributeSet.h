@@ -31,5 +31,8 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "Resource")
 	FGameplayAttributeData Resource;
-	ATTRIBUTE_ACCESSORS(UR_D_CPP_FPS_AttributeSet, Resource)	
+	ATTRIBUTE_ACCESSORS(UR_D_CPP_FPS_AttributeSet, Resource)
+
+	void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
+	void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 };
