@@ -13,7 +13,7 @@ void UR_D_CPP_FPS_AttributeSet::PostAttributeChange(const FGameplayAttribute& At
 	{
 		if (NewValue <= 0)
 		{
-			UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwningActor(),FGameplayTag(),FGameplayEventData());
+			//UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwningActor(),FGameplayTag(),FGameplayEventData());
 		}
 	}
 	

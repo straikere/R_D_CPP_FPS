@@ -36,7 +36,13 @@
 #################################
 # ADD AS NEED BE
 
+# Binary Files
+!Plugins/*/Binaries/*/*.dll
 
+# Compiled source files for the engine to use
+Plugins/*/Intermediate/*
+
+# IDE configs
 /.idea
 .vsconfig
 
