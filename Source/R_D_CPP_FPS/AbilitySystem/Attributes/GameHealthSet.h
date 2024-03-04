@@ -16,6 +16,8 @@ class R_D_CPP_FPS_API UGameHealthSet : public UGameAttributeSet
 
 public:
 	
+	UGameHealthSet();
+	
 	UPROPERTY(BlueprintReadOnly, Category="Health")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UGameHealthSet, Health);
@@ -24,7 +26,7 @@ public:
 	FGameplayAttributeData MaxHealth;
 	ATTRIBUTE_ACCESSORS(UGameHealthSet, MaxHealth);
 
-	// Incoming damage. This is mapped directly to -Health
+	// Incoming healing. This is mapped directly to +Health
 	UPROPERTY(BlueprintReadOnly,Category="Health")
 	FGameplayAttributeData Healing;
 	ATTRIBUTE_ACCESSORS(UGameHealthSet, Healing);
