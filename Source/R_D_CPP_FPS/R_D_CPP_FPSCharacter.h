@@ -3,8 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+
 #include "R_D_CPP_FPSCharacter.generated.h"
 
 class UInputComponent;
