@@ -17,7 +17,8 @@ class R_D_CPP_FPS_API UGameHealthSet : public UGameAttributeSet
 public:
 	
 	UGameHealthSet();
-	
+
+	/*--------Health--------*/
 	UPROPERTY(BlueprintReadOnly, Category="Health")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UGameHealthSet, Health);
@@ -37,7 +38,7 @@ public:
 	ATTRIBUTE_ACCESSORS(UGameHealthSet, Damage);
 
 protected:
-
+	
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
 	virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
 
