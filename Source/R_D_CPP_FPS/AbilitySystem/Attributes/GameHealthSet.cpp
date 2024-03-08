@@ -15,11 +15,10 @@ void UGameHealthSet::PreAttributeChange(const FGameplayAttribute& Attribute, flo
 {
 	Super::PreAttributeChange(Attribute, NewValue);
 
-	ClampAttribute(Attribute, NewValue);
+	//ClampAttribute(Attribute, NewValue);
 
 	if (Attribute == GetHealthAttribute())
 	{
-		
 		// if (GetHealth() < GetMaxHealth())
 		// {
 		// 	GetOwningAbilitySystemComponent()->RemoveLooseGameplayTag(FGameplayTag::RequestGameplayTag("Gameplay.FullHealth"));
@@ -35,7 +34,23 @@ void UGameHealthSet::PostAttributeChange(const FGameplayAttribute& Attribute, fl
 {
 	Super::PostAttributeChange(Attribute, OldValue, NewValue);
 
+	if (Attribute == GetHealthAttribute())
+	{
+		//GEngine->AddOnScreenDebugMessage(-1,2.f,FColor::Red, FString::Printf(TEXT("OldValue %f"), OldValue));
+		//GEngine->AddOnScreenDebugMessage(-1,2.f,FColor::Red, FString::Printf(TEXT("Newvalue %f"), NewValue));
+		//GEngine->AddOnScreenDebugMessage(-1,2.f,FColor::Red, FString::Printf(TEXT("Health %f"), GetHealth()));
+		//GEngine->AddOnScreenDebugMessage(-1,2.f,FColor::Red, FString::Printf(TEXT("Newvalue %f"), NewValue));
 
+		if (GetHealth()>=GetMaxHealth())
+		{
+			UAbilitySystemComponent* ASC = GetOwningAbilitySystemComponent();
+			check(ASC);
+
+			ASC->ApplyModToAttribute(GetHealthAttribute(), EGameplayModOp::Override, NewValue);
+			//SetHealth(FMath::Clamp(NewValue, 0, GetMaxHealth()));
+			//GEngine->AddOnScreenDebugMessage(-1,2.f,FColor::Red, FString::Printf(TEXT("OldValue %f"), OldValue));
+		}
+	}
 	
 	// if (Attribute == GetMaxHealthAttribute())
 	// {
@@ -52,10 +67,10 @@ void UGameHealthSet::PostAttributeChange(const FGameplayAttribute& Attribute, fl
 	
 	
 
-	if (bOutOfHeal && (GetHealth() > 0.0f))
-	{
-		bOutOfHeal = false;
-	}
+	// if (bOutOfHeal && (GetHealth() > 0.0f))
+	// {
+	// 	bOutOfHeal = false;
+	// }
 }
 
 void UGameHealthSet::ClampAttribute(const FGameplayAttribute& Attribute, float& NewValue) const
