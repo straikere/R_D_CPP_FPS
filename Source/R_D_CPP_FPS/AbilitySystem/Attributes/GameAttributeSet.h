@@ -26,4 +26,6 @@ class UGameAttributeSet : public UAttributeSet
 
 public:
 	UGameAttributeSet();
+
+	UAbilitySystemComponent* GetGameAbilitySystemComponent() const;
 };

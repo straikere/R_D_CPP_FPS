@@ -9,3 +9,8 @@ UGameAttributeSet::UGameAttributeSet()
 {
 	
 }
+
+UAbilitySystemComponent* UGameAttributeSet::GetGameAbilitySystemComponent() const
+{
+	return Cast<UAbilitySystemComponent>(GetOwningAbilitySystemComponent());
+}
