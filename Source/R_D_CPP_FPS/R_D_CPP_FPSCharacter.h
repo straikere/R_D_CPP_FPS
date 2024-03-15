@@ -25,6 +25,8 @@ class AR_D_CPP_FPSCharacter : public ACharacter
 	UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
 	USkeletalMeshComponent* Mesh1P;
 
+	
+
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
@@ -40,9 +42,12 @@ class AR_D_CPP_FPSCharacter : public ACharacter
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
-	
+
 public:
 	AR_D_CPP_FPSCharacter();
+
+	UPROPERTY(EditAnywhere, Category="Combat", BlueprintReadWrite)
+	USkeletalMeshComponent* Weapon;
 
 protected:
 	virtual void BeginPlay();
