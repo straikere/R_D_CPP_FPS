@@ -52,8 +52,11 @@ void UGameStaminaSet::PostAttributeChange(const FGameplayAttribute& Attribute, f
 		}
 		if (NewValue <= 0 && !GetOwningAbilitySystemComponent()->HasMatchingGameplayTag(TAG_GAMEPLAY_OUTOFSTAMINA))
 		{
-			//GetOwningAbilitySystemComponent()->HandleGameplayEvent(FGameplayTag(), FGameplayEventData()); Use ths later, i don`t understand how use this :c
-			UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwningActor(),FGameplayTag(TAG_GAMEPLAY_CANCELSPRINT),FGameplayEventData());
+			FGameplayEventData EventData;
+			EventData.EventTag = TAG_GAMEPLAY_CANCELSPRINT;
+			//EventData.Instigator = GetOwningActor(); for test
+			GetOwningAbilitySystemComponent()->HandleGameplayEvent(TAG_GAMEPLAY_CANCELSPRINT, &EventData); // Work)
+			//UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwningActor(),FGameplayTag(TAG_GAMEPLAY_CANCELSPRINT),FGameplayEventData());
 			GetOwningAbilitySystemComponent()->AddLooseGameplayTag(TAG_GAMEPLAY_OUTOFSTAMINA);
 		}
 	}
