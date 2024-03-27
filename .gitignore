@@ -46,3 +46,7 @@ Plugins/*/Intermediate/*
 /.idea
 .vsconfig
 
+/Content/MCO_Mocap_Basics
+/Source/FBX
+/Source/Maya
+/Source/Motionbuilder
