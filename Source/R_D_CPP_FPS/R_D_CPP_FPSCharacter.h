@@ -22,7 +22,7 @@ class AR_D_CPP_FPSCharacter : public ACharacter
 	GENERATED_BODY()
 
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
-	UPROPERTY(BlueprintReadOnly, Category=Mesh, meta=(AllowPrivateAccess))
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category=Mesh, meta=(AllowPrivateAccess))
 	USkeletalMeshComponent* Mesh1P;
 	
 	/** First person camera */

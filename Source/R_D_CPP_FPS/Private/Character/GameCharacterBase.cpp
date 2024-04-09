@@ -3,6 +3,8 @@
 
 #include "Character/GameCharacterBase.h"
 
+#include "AbilitySystemComponent.h"
+
 AGameCharacterBase::AGameCharacterBase()
 {
 	PrimaryActorTick.bCanEverTick = false;
