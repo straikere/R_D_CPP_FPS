@@ -93,10 +93,13 @@ void AR_D_CPP_FPSCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 	
+	
 	if (const ACharacterState* CharacterState = NewController->GetPlayerState<ACharacterState>())
 	{
 		CharacterState->GetAbilitySystemComponent()->SetAvatarActor(this);
 	}
+
+	
 }
 
 void AR_D_CPP_FPSCharacter::UnPossessed()

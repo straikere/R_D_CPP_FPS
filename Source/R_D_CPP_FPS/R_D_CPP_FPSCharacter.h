@@ -26,7 +26,7 @@ class AR_D_CPP_FPSCharacter : public ACharacter
 	USkeletalMeshComponent* Mesh1P;
 	
 	/** First person camera */
-	UPROPERTY(VisibleAnywhere, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FirstPersonCameraComponent;
 
 	/** MappingContext */
